@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: angular-app
+  name: frontend
   namespace: default
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: angular-app
+      app: frontend
   template:
     metadata:
       labels:
-        app: angular-app
+        app: frontend
     spec:
       containers:
-      - name: angular-app
-        image: registry.gitlab.com/your-username/angular-app:latest
+      - name: frontend
+        image: registry.gitlab.com/seifeddineabidi1/Approbation/frontend:latest
         ports:
         - containerPort: 80
