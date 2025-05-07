@@ -1,33 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
-  namespace: default
+  name: approbation-backend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: backend
+      app: approbation-backend
   template:
     metadata:
       labels:
-        app: backend
+        app: approbation-backend
     spec:
       containers:
       - name: backend
-        image: registry.gitlab.com/seifeddineabidi1/Approbation/backend:latest
+        image: yourdockerhub/approbation-backend:latest
         ports:
         - containerPort: 8080
         env:
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://mysql:3306/camunda?useSSL=false&serverTimezone=UTC"
+          value: "jdbc:mysql://mysql:3306/camunda?useSSL=false"
         - name: SPRING_DATASOURCE_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: mysql-credentials
-              key: username
+          value: "root"
         - name: SPRING_DATASOURCE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-credentials
-              key: password
+          value: "root"
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
