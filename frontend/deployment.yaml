@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: yourdockerhub/approbation-frontend:latest
+        image: seifeddineabidi/approbation-frontend:latest
         ports:
         - containerPort: 80
