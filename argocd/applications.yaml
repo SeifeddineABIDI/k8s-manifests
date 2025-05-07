@@ -7,8 +7,12 @@ spec:
   project: default
   source:
     repoURL: https://github.com/SeifeddineABIDI/k8s-manifests.git
-    targetRevision: main
+    targetRevision: HEAD
     path: .
+    kustomize:
+      namePrefix: approbation-
+      commonLabels:
+        app: approbation
   destination:
     server: https://kubernetes.default.svc
     namespace: default
@@ -16,5 +20,3 @@ spec:
     automated:
       selfHeal: true
       prune: true
-    syncOptions:
-    - CreateNamespace=true
