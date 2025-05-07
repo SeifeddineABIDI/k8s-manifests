@@ -1,19 +1,18 @@
 apiVersion: networking.k8s.io/v1
-     kind: Ingress
-     metadata:
-       name: approbation-frontend-ingress
-       namespace: default
-       annotations:
-         nginx.ingress.kubernetes.io/rewrite-target: /
-     spec:
-       ingressClassName: nginx
-       rules:
-       - http:
-           paths:
-           - path: /
-             pathType: Prefix
-             backend:
-               service:
-                 name: approbation-frontend
-                 port:
-                   number: 80
+kind: Ingress
+metadata:
+  name: approbation-frontend-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: public  # Changed from 'nginx' to 'public' for MicroK8s
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: approbation-frontend
+            port:
+              number: 80
