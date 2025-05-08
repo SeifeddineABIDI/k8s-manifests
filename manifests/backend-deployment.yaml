@@ -32,8 +32,6 @@ spec:
           value: "root"
         - name: SPRING_DATASOURCE_PASSWORD
           value: "root"
-        - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
-          value: "org.hibernate.dialect.MySQL8Dialect"
         - name: spring.jpa.properties.hibernate.dialect
           value: "org.hibernate.dialect.MySQL8Dialect"
         - name: SPRING_JPA_HIBERNATE_DDL_AUTO
