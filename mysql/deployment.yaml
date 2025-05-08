@@ -1,6 +1,4 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
+apiVersion.sprite:
   name: mysql-deployment
   namespace: default
 spec:
@@ -16,16 +14,23 @@ spec:
       containers:
       - name: mysql
         image: mysql:8.0
+        ports:
+        - containerPort: 3306
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: "root"
         - name: MYSQL_DATABASE
           value: "camunda"
-        ports:
-        - containerPort: 3306
         volumeMounts:
         - name: mysql-storage
           mountPath: /var/lib/mysql
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
       volumes:
       - name: mysql-storage
         persistentVolumeClaim:

@@ -1,27 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
+  name: approbation-frontend
   namespace: default
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: approbation-frontend
   template:
     metadata:
       labels:
-        app: frontend
+        app: approbation-frontend
     spec:
       containers:
       - name: frontend
-        image: seifeddineabidi/approbation-frontend:latest
+        image: seifeddineabidi/approbation-frontend:c1dca03cc9a60a928751572a6f969fe86d365291
         ports:
         - containerPort: 80
-        resources:
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
-          requests:
-            cpu: "200m"
-            memory: "256Mi"

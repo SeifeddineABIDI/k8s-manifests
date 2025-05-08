@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: approbation-backend
   namespace: default
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: backend
+      app: approbation-backend
   template:
     metadata:
       labels:
-        app: backend
+        app: approbation-backend
     spec:
       containers:
       - name: backend
@@ -20,15 +20,8 @@ spec:
         - containerPort: 8080
         env:
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://mysql-service:3306/approbation_db?createDatabaseIfNotExist=true"
+          value: "jdbc:mysql://mysql:3306/camunda?useSSL=false"
         - name: SPRING_DATASOURCE_USERNAME
           value: "root"
         - name: SPRING_DATASOURCE_PASSWORD
-          value: "password"
-        resources:
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
-          requests:
-            cpu: "200m"
-            memory: "256Mi"
+          value: "root"
