@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: approbation-ollama
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: approbation-ollama
+  template:
+    metadata:
+      labels:
+        app: approbation-ollama
+    spec:
+      containers:
+      - name: ollama
+        image: ollama/ollama:0.1.44
+        ports:
+        - containerPort: 11434
+        command: ["/bin/sh", "-c", "ollama serve & sleep 5 && ollama pull llama3.2 && tail -f /dev/null"]
+        resources:
+          limits:
+            cpu: "1000m"
+            memory: "2048Mi"
+          requests:
+            cpu: "500m"
+            memory: "1024Mi"
