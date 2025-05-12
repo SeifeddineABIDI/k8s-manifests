@@ -15,14 +15,14 @@ spec:
     spec:
       initContainers:
       - name: wait-for-mysql
-        image: seifeddineabidi/approbation-backend:b44dd98034f04ecb1941b12965422416d4ab9d17
+        image: seifeddineabidi/approbation-backend:3441219e9298ec209416ea46a1cf316165ff25c7
         command:
         - sh
         - -c
         - "until nslookup mysql; do echo waiting for mysql; sleep 2; done;"
       containers:
       - name: backend
-        image: seifeddineabidi/approbation-backend:b44dd98034f04ecb1941b12965422416d4ab9d17
+        image: seifeddineabidi/approbation-backend:3441219e9298ec209416ea46a1cf316165ff25c7
         ports:
         - containerPort: 8080
         env:
