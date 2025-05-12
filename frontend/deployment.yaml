@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: nginx:latest
+        image: seifeddineabidi/approbation-frontend:latest
         ports:
         - containerPort: 80
         env:
