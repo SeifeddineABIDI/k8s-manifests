@@ -14,42 +14,42 @@ spec:
         app: backend
     spec:
       initContainers:
-      - name: wait-for-mysql
-        image: seifeddineabidi/approbation-backend:b44dd98034f04ecb1941b12965422416d4ab9d17
-        command:
-        - sh
-        - -c
-        - "until nslookup mysql; do echo waiting for mysql; sleep 2; done;"
+        - name: wait-for-mysql
+          image: busybox
+          command: ['sh', '-c', 'until nslookup approbation-mysql; do echo waiting for mysql; sleep 2; done;']
       containers:
-      - name: backend
-        image: seifeddineabidi/approbation-backend:b44dd98034f04ecb1941b12965422416d4ab9d17
-        ports:
-        - containerPort: 8080
-        env:
-        - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://mysql:3306/camunda?allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Europe/Paris"
-        - name: SPRING_DATASOURCE_USERNAME
-          value: "root"
-        - name: SPRING_DATASOURCE_PASSWORD
-          value: "root"
-        - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
-          value: "org.hibernate.dialect.MySQL8Dialect"
-        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
-          value: "update"
-        - name: CAMUNDA_BPM_WEBAPP_CORS_ALLOWED_ORIGINS
-          value: "http://frontend.192.168.63.128.nip.io"
-        - name: OLLAMA_API_URL
-          value: "http://approbation-ollama:11434/api/generate" # Adjust if Ollama is deployed
-        resources:
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
-          requests:
-            cpu: "200m"
-            memory: "256Mi"
-        readinessProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-          initialDelaySeconds: 30
-          periodSeconds: 10
+        - name: backend
+          image: seifeddineabidi/approbation-backend:3441219e9298ec209416ea46a1cf316165ff25c7
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://approbation-mysql:3306/camunda?allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Europe/Paris
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: root
+            - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+              value: org.hibernate.dialect.MySQL8Dialect
+            - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+              value: update
+            - name: CAMUNDA_BPM_WEBAPP_CORS_ALLOWED_ORIGINS
+              value: http://frontend.192.168.63.128.nip.io
+            - name: OLLAMA_API_URL
+              value: http://approbation-ollama:11434/api/generate
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
