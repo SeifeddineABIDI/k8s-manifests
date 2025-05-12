@@ -20,7 +20,7 @@ spec:
         - containerPort: 80
         env:
         - name: API_URL
-          value: "http://approbation-backend:8080"
+          value: "http://backend.192.168.2.189.nip.io"
         - name: RECAPTCHA_SITE_KEY
           value: "6LdDuhcrAAAAAHrytAMLMiwP_PGlS7y_cAKQMqHn"
         resources:
