@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: approbation-mysql
+  name: mysql-deployment
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: approbation-mysql
+      app: mysql
   template:
     metadata:
       labels:
-        app: approbation-mysql
+        app: mysql
     spec:
       containers:
       - name: mysql

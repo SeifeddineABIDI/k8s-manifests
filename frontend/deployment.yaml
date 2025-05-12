@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: approbation-frontend
+  name: frontend-deployment
   namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: approbation-frontend
+      app: frontend
   template:
     metadata:
       labels:
-        app: approbation-frontend
+        app: frontend
     spec:
       containers:
       - name: frontend
-        image: seifeddineabidi/approbation-frontend:latest
+        image: nginx:latest
         ports:
         - containerPort: 80
         env:
