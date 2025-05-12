@@ -8,8 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /  # Rewrite the URL path as needed
 spec:
   rules:
-  - host: approbation.example.com  # Replace with your actual domain or use wildcard
-    http:
+  - http:
       paths:
       - path: /
         pathType: Prefix
