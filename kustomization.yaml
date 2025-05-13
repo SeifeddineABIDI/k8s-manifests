@@ -6,4 +6,5 @@ resources:
 - mysql/
 - ollama/
 - postgresql/
+- sonarqube/
 - secrets.yaml
