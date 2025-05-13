@@ -5,4 +5,5 @@ resources:
 - backend/
 - mysql/
 - ollama/
+- postgresql/
 - secrets.yaml
