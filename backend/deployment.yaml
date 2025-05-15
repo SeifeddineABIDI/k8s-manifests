@@ -35,6 +35,8 @@ spec:
               value: http://approbation-ollama.default.svc.cluster.local:11434/api/generate
             - name: QUERY_API_URL
               value: http://backend-service.default.svc.cluster.local:8080/query/execute
+            - name: CAMUNDA_ENGINE_URL
+              value: http://backend-service.default.svc.cluster.local:8080/engine-rest
           resources:
             limits:
               cpu: 500m
