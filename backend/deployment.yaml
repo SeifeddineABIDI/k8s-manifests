@@ -32,7 +32,8 @@ spec:
             - name: CAMUNDA_BPM_WEBAPP_CORS_ALLOWED_ORIGINS
               value: http://frontend.192.168.2.189.nip.io,http://localhost:3000
             - name: OLLAMA_API_URL
-              value: http://approbation-ollama:11434/api/generate
+              value: http://approbation-ollama.default.svc.cluster.local:11434/api/generate
+            - name: 
           resources:
             limits:
               cpu: 500m
