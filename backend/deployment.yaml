@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: seifeddineabidi/approbation-backend:4e6f7a721595b45d7cc72a55325f797a7b948c87
+          image: seifeddineabidi/approbation-backend:4c2d61c626742b685f991212b957cb1978d9bb13
           ports:
             - containerPort: 8080
           env:
@@ -33,7 +33,6 @@ spec:
               value: http://frontend.192.168.2.189.nip.io,http://localhost:3000
             - name: OLLAMA_API_URL
               value: http://approbation-ollama.default.svc.cluster.local:11434/api/generate
-            - name: 
           resources:
             limits:
               cpu: 500m
