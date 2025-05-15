@@ -33,6 +33,8 @@ spec:
               value: http://frontend.192.168.2.189.nip.io,http://localhost:3000
             - name: OLLAMA_API_URL
               value: http://approbation-ollama.default.svc.cluster.local:11434/api/generate
+            - name: QUERY_API_URL
+              value: http://backend-service.default.svc.cluster.local:8080/query/execute
           resources:
             limits:
               cpu: 500m
