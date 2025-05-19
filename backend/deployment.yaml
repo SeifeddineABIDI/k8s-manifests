@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: seifeddineabidi/approbation-backend:e69c1fd7cc3bc787dfb19dcb9dd1c5923f6eb2f8
+          image: seifeddineabidi/approbation-backend:22c7b50c42df89b18825ceea7bf91a60d532f69d
           ports:
             - containerPort: 8080
           env:
