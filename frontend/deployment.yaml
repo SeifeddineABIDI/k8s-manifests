@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: seifeddineabidi/approbation-frontend:7f400880d0957248c61edea883e6d6080c94aa33
+        image: seifeddineabidi/approbation-frontend:48f20d05c162e1631320de2134723c50ea08821e
         ports:
         - containerPort: 80
         env:
